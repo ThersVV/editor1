@@ -1,15 +1,5 @@
-## Repository structure
+TODO tohle vsechno, jen sepisuju myslneky xd
 
-- [labs](labs) - anything done during lab classes
-  - [msvc_project](labs/msvc_project) - sample Microsoft Visual Studio project
-  - [cmake_project](labs/cmake_project) - sample cmake project
-- [homeworks](homeworks) - home assignments except the final one
-- [finalhw](finalhw) - the final homework (required before the lab-credit test)
-- [project](project) - the project (the second part of the lab-credit)
-  - [docs](project/docs) - the specification and the documentation
-  - [src](project/src) - the source files, projects, scripts etc.
-
-## Caution
-
-Never commit compilation (by-)products and machine-specific settings into git. Use [.gitignore](.gitignore) to hide these files from default commit suggestions.
-
+1. ve VSCODE nastaveni najdi C/C++: Edit configurations (UI), tam include path, přidej tam něco jako /usr/local/qt6/**
+2. Někam si pullni vcpkg repozitář a v compile.sh k němu nastav cestu (TODO parametr)
+3. 
