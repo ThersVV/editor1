@@ -1,14 +1,23 @@
-﻿#include <QtWidgets/QApplication>
-#include <QMainWindow>
+﻿#include <gtkmm-4.0/gtkmm.h>
 
-int main(int argc, char* argv[])
+class HelloWindow : public Gtk::Window
 {
-    QApplication app(argc, argv);
+public:
+    HelloWindow()
+    {
+        set_title("Hello, GTKmm");
+        set_default_size(300, 200);
+    }
+};
 
-    QMainWindow mainWindow;
-    mainWindow.setWindowTitle("Hello, Qt!");
-    mainWindow.resize(400, 300);
-    mainWindow.show();
+int main(int argc, char *argv[])
+{
+    // Create the GTK application without passing argc and argv
+    auto app = Gtk::Application::create("org.gtkmm.example");
 
-    return app.exec();
+    // Create the main window
+    HelloWindow window;
+
+    // Run the application with the main window
+    return app->make_window_and_run<HelloWindow>(argc, argv);
 }
