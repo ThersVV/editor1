@@ -1,6 +1,7 @@
 *.vcxproj*
 *.sln
 .vs/*
+.vscode/*
 Debug/*
 Release/*
 x64/*
@@ -8,3 +9,6 @@ CMakeFiles/*
 editorMain.dir/*
 cmake_install.cmake
 CMakeCache.txt
+editor1app_autogen/*
+Makefile
+editorMain
