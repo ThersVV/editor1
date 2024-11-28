@@ -1,3 +1,4 @@
+set -euxo pipefail
 
 VCPKG_ROOT="/home/vojtechnovotny/Desktop/vcpkg" # TODO nice printing if not found
 TRIPLET="x64-linux" #of course change this to linux/windows (or delete)
