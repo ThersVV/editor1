@@ -1,0 +1,8 @@
+# Fedora base image
+FROM fedora:40
+
+RUN dnf install -y git
+RUN git clone https://github.com/microsoft/vcpkg.git
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
