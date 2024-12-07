@@ -5,18 +5,7 @@ TRIPLET="x64-windows" #of course change this to linux/windows (or delete)
 
 export X_VCPKG_FORCE_VCPKG_X_LIBRARIES=1
 
-if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "win32" ]]; then
-    # Windows installation
-    if ! command -v choco &> /dev/null; then
-        echo "Installing Chocolatey..."
-        powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; \
-            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; \
-            iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
-    fi
-
-    choco install cmake nasm python curl zip unzip --no-progress -y
-    
-elif [[ -f /etc/os-release ]]; then
+if [[ -f /etc/os-release ]]; then
     # Linux installation
     . /etc/os-release
     if [[ "$ID" == "ubuntu" ]]; then
