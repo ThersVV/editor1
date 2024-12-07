@@ -1,7 +1,7 @@
 set -euxo pipefail
 
-VCPKG_ROOT="/vcpkg" # TODO nice printing if not found
-TRIPLET="x64-linux" #of course change this to linux/windows (or delete)
+VCPKG_ROOT="../vcpkg" # TODO nice printing if not found
+TRIPLET="x64-windows" #of course change this to linux/windows (or delete)
 
 export X_VCPKG_FORCE_VCPKG_X_LIBRARIES=1
 
@@ -14,8 +14,7 @@ if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "win32" ]]; then
             iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
     fi
 
-    choco install git cmake nasm python bison libx11 libxft libxext libtool libxrandr libxi \
-    libxcursor libxdamage libxinerama libdrm curl zip unzip tar autoconf gdb --no-progress -y
+    choco install cmake nasm python curl zip unzip --no-progress -y
     
 elif [[ -f /etc/os-release ]]; then
     # Linux installation
