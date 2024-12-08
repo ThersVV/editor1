@@ -19,6 +19,7 @@ if [[ -f /etc/os-release ]]; then
             bison autoconf libtool libXcursor-devel libdrm-devel libXext-devel libXrandr-devel \
             libXi-devel libXdamage-devel libXinerama-devel
         # This looks an extra package but for some reason it needs to be done in fedora only:
+        # Maybe only on docker, I cannot be sure about that.
         sudo dnf install glibc-gconv-extra -y
     else
         echo "Unsupported Linux distribution: $ID"
