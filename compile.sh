@@ -3,8 +3,6 @@ set -euxo pipefail
 VCPKG_ROOT="../vcpkg" # TODO nice printing if not found
 TRIPLET="x64-windows" #of course change this to linux/windows (or delete)
 
-export X_VCPKG_FORCE_VCPKG_X_LIBRARIES=1
-
 if [[ -f /etc/os-release ]]; then
     # Linux installation
     . /etc/os-release
