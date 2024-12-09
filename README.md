@@ -1,26 +1,18 @@
-TODO tohle vsechno, jen sepisuju myslneky xd
+Compilation guide:
 
-1. ve VSCODE nastaveni najdi C/C++: Edit configurations (UI), tam include path, přidej tam něco jako /usr/local/qt6/**
-2. Někam si pullni vcpkg repozitář a v compile.sh k němu nastav cestu (TODO parametr) a nastav tam i TRIPLET asi
-3. Na windowsu nainstalovat VS s C++ desktop balickem, cmake, clonenout vcpkg, nastavit veci v compile.sh a je to. 
-Ve visual studiu jen clovek nacte vygenerovany .sln a je to. Otestovano v VM.
+On Linux (Proven to work in Fedora 40 docker container and in Ubuntu 22.04 docker container):
+1. Clone the vcpkg repository (https://github.com/microsoft/vcpkg.git)
+2. In compile.sh, set the VCPKG_ROOT variable to the full path of the previously cloned repository
+3. Run `sudo ./install_linux_pkgs.sh` or install the packages specified inside by hand
+4. Run `./compile.sh`
+5. (In the root directory of this project a Makefile should appear. Then you can just run make and editorMain will be created, which you can simply run)
 
-PS: On Windows 11 vcpkg used different triplet than it specified in my CMakeLists.txt file. If compile.sh does not succeed, uncomment and comment relevant lines, it should be intuitive which ones
+On Windows (Proven to work in Windows 10 Virtual Machine):
+1. Install Visual Studio with the "Desktop Development with C++" workload
+2. Install CMake
+3. Clone the vcpkg repository (https://github.com/microsoft/vcpkg.git)
+4. In compile.sh, set the VCPKG_ROOT variable to the full path of the previously cloned repository
+5. Run compile.sh
+6. (Then you can open the generated .sln file in Visual studio and happily so whatever you wanted to do)
 
-
-            "includePath": [
-                "${workspaceFolder}/**",
-                "C:/vcpkg/installed/x64-windows/include/gtkmm-4.0/**",
-                "C:/vcpkg/installed/x64-windows/include/glibmm-2.68/**",
-                "C:/vcpkg/installed/x64-windows/include/glib-2.0/**",
-                "C:/vcpkg/installed/x64-windows/include/",
-                "C:/vcpkg/installed/x64-windows/include/giomm-2.68/**",
-                "C:/vcpkg/installed/x64-windows/include/cairo/**",
-                "C:/vcpkg/installed/x64-windows/include/gtk-4.0/**",
-                "C:/vcpkg/installed/x64-windows/include/pango-1.0/**",
-                "C:/vcpkg/installed/x64-windows/include/harfbuzz/**",
-                "C:/vcpkg/installed/x64-windows/include/gdk-pixbuf-2.0/**",
-                "C:/vcpkg/installed/x64-windows/include/pangomm-2.48/**",
-                "C:/vcpkg/installed/x64-windows/include/graphene-1.0/**",
-                "C:/vcpkg/installed/x64-windows/lib/**"
-            ],
+If you examine the compile.sh file, you'll find that it will install some X libraries using the Ubuntu/Fedora default package manager. Why not use VCPKG? I've tried it and it's not only a bit of a hassle (one must set an enviroment variable in the triplet cmake file), still libXcursor has no VCPKG replacement and then, when everything finally compiles, cmake throws a warning at the user. I'm not sure what the warning means or how difficult it is to solve. But what was obvious was that using apt/dnf for these development libraries is just easier and probably will result in less unexpected behaviour in the future.

@@ -5,7 +5,7 @@ set(VCPKG_TARGET_TRIPLET ${TRIPLET})
 
 project(editorMain VERSION 1.0.0 LANGUAGES CXX)
 if (EXISTS "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
-    # Not using -DCMAKE_TOOLCHAIN_FILE becuase it apparently is not cross-compilation proof
+    # Not using -DCMAKE_TOOLCHAIN_FILE becuase it apparently is not 100% cross-compilation proof
     # Source: (https://stackoverflow.com/questions/55496611/cmake-cannot-find-libraries-installed-with-vcpkg)
     include(${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
 endif()
