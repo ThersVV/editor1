@@ -5,7 +5,7 @@ VCPKG_ROOT="../vcpkg" # TODO nice printing if not found
 os_name=$(uname)
 if [[ "$os_name" == "Linux" ]]; then
     TRIPLET="x64-linux"
-elif [[ "$os" == "CYGWIN"* || "$os" == "MINGW"* || "$os" == "MSYS"* ]]; then
+elif [[ "$os_name" == "CYGWIN"* || "$os_name" == "MINGW"* || "$os_name" == "MSYS"* ]]; then
     TRIPLET="x64-windows"
 else
     echo "Unsupported OS: $os_name"
